@@ -9,23 +9,24 @@
 		<!-- stylesheet -->
 		<link rel="stylesheet" type="text/css" href="../css/screen.css">
 		<link rel="stylesheet" type="text/css" href="../css/responsive.css">
-		<link rel="stylesheet" href="../css/sss.css" type="text/css" media="all">
 
 		<!-- script -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<script src="../scripts/script.js"></script>
-		<script language="JavaScript1.2" src="../scripts/sss.min.js"></script>
+		<script src="../scripts/bare-bone-slider.js"></script>
 
 	</head>
 	<body>
 	<section class="masthead">
-		<div class="background">
-		<div id="slider" class="slider">
-			<img src="../img/slider1.jpg" alt="Server Image">
-			<img src="../img/slider2.jpg" alt="Server Image">
-			<img src="../img/slider3.jpg" alt="Server Image">
+		
+		<div id="home-slider">
+			<div class="bb-slider slider-example">
+				<div class="slide bb-slide one"></div>
+				<div class="slide bb-slide two"></div>
+				<div class="slide bb-slide three"></div>
+			</div>
 		</div>
-		</div>
+
 		<div>
 			<header>
 				<div class="navigation">
@@ -88,70 +89,7 @@
 					</li>
 
 					<li class="about">
-						<p>
-					<script>
-
-	/*
-	Neon Lights Text
-	By JavaScript Kit (http://javascriptkit.com)
-	For this script, TOS, and 100s more DHTML scripts,
-	Visit http://www.dynamicdrive.com
-	*/
-
-	var message="Let's build your site!"
-	var neonbasecolor="black"
-	var neontextcolor="#FFFF66"
-	var flashspeed=222  //in milliseconds
-
-	///No need to edit below this line/////
-
-	var n=0
-	if (document.all||document.getElementById){
-	document.write('<font color="'+neonbasecolor+'">')
-	for (m=0;m<message.length;m++)
-	document.write('<span id="neonlight'+m+'">'+message.charAt(m)+'</span>')
-	document.write('</font>')
-	}
-	else
-	document.write(message)
-
-	function crossref(number){
-	var crossobj=document.all? eval("document.all.neonlight"+number) : document.getElementById("neonlight"+number)
-	return crossobj
-	}
-
-	function neon(){
-
-	//Change all letters to base color
-	if (n==0){
-	for (m=0;m<message.length;m++)
-	//eval("document.all.neonlight"+m).style.color=neonbasecolor
-	crossref(m).style.color=neonbasecolor
-	}
-
-	//cycle through and change individual letters to neon color
-	crossref(n).style.color=neontextcolor
-
-	if (n<message.length-1)
-	n++
-	else{
-	//n=0  // disabled this line to run effect only once
-	clearInterval(flashing)
-	setTimeout("beginneon()",1500)
-	return
-	}
-	}
-
-	function beginneon(){
-	if (document.all||document.getElementById)
-	flashing=setInterval("neon()",flashspeed)
-	}
-	beginneon()
-
-
-	</script>
-
-			</p>
+						<p id="animatedText"></p>
 						<ul>
 							<li><a href="#" class="facebook"></a></li>
 							<li><a href="#" class="twitter"></a></li>
@@ -161,135 +99,11 @@
 					</li>
 				</ul>
 			</div>
-		<script>jQuery(function($) {$('.slider').sss();});</script>
+		<!-- <script>jQuery(function($) {$('.slider').sss();});</script> -->
 			<div class="copyrights wrapper">
 				Copyright © <span class="year"></span> I & T Webdesign Ltd. All Rights Reserved.
 			</div>
 		</footer>
-
-
-	
-	<script type="text/javascript">
-	/***********************************************
-	* Translucent Slideshow script- © Dynamic Drive DHTML code library (www.dynamicdrive.com)
-	* This notice MUST stay intact for legal use
-	* Visit Dynamic Drive at http://www.dynamicdrive.com/ for full source code
-	***********************************************/
-
-	var trans_width='900px' //slideshow width
-	var trans_height='225px' //slideshow height
-	var pause=300000 //SET PAUSE BETWEEN SLIDE (3000=3 seconds)
-	var degree=10 //animation speed. Greater is faster.
-
-	var slideshowcontent=new Array()
-	//Define slideshow contents: [image URL, OPTIONAL LINK, OPTIONAL LINK TARGET]
-	slideshowcontent[0]=["images/slide-1-03.jpg", "", ""]
-	//slideshowcontent[1]=["images/slide-1-03.jpg", "", ""]
-
-	//slideshowcontent[1]=["photo2.jpg", "http://www.cnn.com", "_new"]
-	//slideshowcontent[2]=["photo3.jpg", "http://www.google.com", ""]
-
-
-	////NO need to edit beyond here/////////////
-
-	var bgcolor='black'
-
-	var imageholder=new Array()
-	for (i=0;i<slideshowcontent.length;i++){
-	imageholder[i]=new Image()
-	imageholder[i].src=slideshowcontent[i][0]
-	}
-
-	var ie4=document.all
-	var dom=document.getElementById&&navigator.userAgent.indexOf("Opera")==-1
-
-
-	var curpos=trans_width*(-1)
-	var curcanvas="canvas0"
-	var curindex=0
-	var nextindex=1
-
-	function getslidehtml(theslide){
-	var slidehtml=""
-	if (theslide[1]!="")
-	slidehtml='<a href="'+theslide[1]+'" target="'+theslide[2]+'">'
-	slidehtml+='<img src="'+theslide[0]+'" border="0">'
-	if (theslide[1]!="")
-	slidehtml+='</a>'
-	return slidehtml
-	}
-
-	function moveslide(){
-	if (curpos<0){
-	curpos=Math.min(curpos+degree,0)
-	tempobj.style.left=curpos+"px"
-	}
-	else{
-	clearInterval(dropslide)
-	if (crossobj.filters)
-	crossobj.filters.alpha.opacity=100
-	else if (crossobj.style.MozOpacity)
-	crossobj.style.MozOpacity=1
-	nextcanvas=(curcanvas=="canvas0")? "canvas0" : "canvas1"
-	tempobj=ie4? eval("document.all."+nextcanvas) : document.getElementById(nextcanvas)
-	tempobj.innerHTML=getslidehtml(slideshowcontent[curindex])
-	nextindex=(nextindex<slideshowcontent.length-1)? nextindex+1 : 0
-	setTimeout("rotateslide()",pause)
-	}
-	}
-
-	function rotateslide(){
-	if (ie4||dom){
-	resetit(curcanvas)
-	crossobj=tempobj=ie4? eval("document.all."+curcanvas) : document.getElementById(curcanvas)
-	crossobj.style.zIndex++
-	if (crossobj.filters)
-	document.all.canvas0.filters.alpha.opacity=document.all.canvas1.filters.alpha.opacity=20
-	else if (crossobj.style.MozOpacity)
-	document.getElementById("canvas0").style.MozOpacity=document.getElementById("canvas1").style.MozOpacity=0.2
-	var temp='setInterval("moveslide()",50)'
-	dropslide=eval(temp)
-	curcanvas=(curcanvas=="canvas0")? "canvas1" : "canvas0"
-	}
-	else if (document.layers){
-	crossobj.document.write(getslidehtml(slideshowcontent[curindex]))
-	crossobj.document.close()
-	}
-	curindex=(curindex<slideshowcontent.length-1)? curindex+1 : 0
-	}
-
-	function jumptoslide(which){
-	curindex=which
-	rotateslide()
-	}
-
-	function resetit(what){
-	curpos=parseInt(trans_width)*(-1)
-	var crossobj=ie4? eval("document.all."+what) : document.getElementById(what)
-	crossobj.style.left=curpos+"px"
-	}
-
-	function startit(){
-	crossobj=ie4? eval("document.all."+curcanvas) : dom? document.getElementById(curcanvas) : document.tickernsmain.document.tickernssub
-	if (ie4||dom){
-	crossobj.innerHTML=getslidehtml(slideshowcontent[curindex])
-	rotateslide()
-	}
-	else{
-	document.tickernsmain.visibility='show'
-	curindex++
-	setInterval("rotateslide()",pause)
-	}
-	}
-
-	if (window.addEventListener)
-	window.addEventListener("load", startit, false)
-	else if (window.attachEvent)
-	window.attachEvent("onload", startit)
-	else if (ie4||dom||document.layers)
-	window.onload=startit
-
-	</script>
 
 	</body>
 </html>
